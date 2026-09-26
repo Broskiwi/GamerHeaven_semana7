@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface VideojuegoRepository extends JpaRepository<Videojuego, Integer> {
     Videojuego findByTitulo(String titulo);
-    List<Videojuego> findAllByPlataforma(String plataforma);
+    List<Videojuego> findAllByPlataformaIgnoreCase(String plataforma);
 }

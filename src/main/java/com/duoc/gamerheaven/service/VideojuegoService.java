@@ -24,12 +24,12 @@ public class VideojuegoService {
     }
 
     public Videojuego findByTitulo(String titulo) {
-        String normalizeTitulo = titulo.toLowerCase();
+        String normalizeTitulo = titulo;
         return videojuegoRepository.findByTitulo(normalizeTitulo);
     }
 
     public Optional<List<Videojuego>> findAllByPlataforma(String plataforma) {
-        String normalizePlataforma = plataforma.toLowerCase();
+        String normalizePlataforma = plataforma;
         return Optional.ofNullable(videojuegoRepository.findAllByPlataforma(normalizePlataforma));
     }
 
@@ -52,10 +52,11 @@ public class VideojuegoService {
         }
     }
 
-    public void delete(int id) {
-        if (videojuegoRepository.existsById(id)) {
-            return;
+    public boolean delete(int id) {
+        if (!videojuegoRepository.existsById(id)) {
+            return false;
         }
         videojuegoRepository.deleteById(id);
+        return true;
     }
 }
