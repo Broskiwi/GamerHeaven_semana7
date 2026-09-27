@@ -1,18 +1,20 @@
 package com.duoc.gamerheaven.service;
 
-import com.duoc.gamerheaven.model.Videojuego;
-import com.duoc.gamerheaven.repository.VideojuegoRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.duoc.gamerheaven.model.Videojuego;
+import com.duoc.gamerheaven.repository.VideojuegoRepository;
 
 @Service
 public class VideojuegoService {
 
     @Autowired
     private VideojuegoRepository videojuegoRepository;
+    
 
     public List<Videojuego> findAll() {
         return videojuegoRepository.findAll();
