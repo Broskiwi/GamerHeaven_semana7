@@ -14,7 +14,6 @@ public class VideojuegoService {
     @Autowired
     private VideojuegoRepository videojuegoRepository;
 
-
     public List<Videojuego> findAll() {
         return videojuegoRepository.findAll();
     }
@@ -23,14 +22,12 @@ public class VideojuegoService {
         return videojuegoRepository.findById(id);
     }
 
-    public Videojuego findByTitulo(String titulo) {
-        String normalizeTitulo = titulo;
-        return videojuegoRepository.findByTitulo(normalizeTitulo);
+    public Optional<Videojuego> findByTitulo(String titulo) {
+        return videojuegoRepository.findByTituloIgnoreCase(titulo);
     }
 
-    public Optional<List<Videojuego>> findAllByPlataforma(String plataforma) {
-        String normalizePlataforma = plataforma;
-        return Optional.ofNullable(videojuegoRepository.findAllByPlataforma(normalizePlataforma));
+    public List<Videojuego> findAllByPlataforma(String plataforma) {
+        return videojuegoRepository.findAllByPlataformaIgnoreCase(plataforma);
     }
 
     public Videojuego create(Videojuego videojuego) {
